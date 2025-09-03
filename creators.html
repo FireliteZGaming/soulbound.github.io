@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soulbound Studios | Creators</title>
+    <!-- Tailwind CSS for modern styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts for a clean, modern look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Chakra+Petch:wght@700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles and animations */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0d0d0d;
+            color: #e0e0e0;
+        }
+
+        .font-brand {
+            font-family: 'Chakra Petch', sans-serif;
+        }
+        
+        /* Loading Screen Animation */
+        #loading-screen.fade-out {
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.7s ease-out, visibility 0.7s;
+        }
+
+        /* Sidebar Menu Animation */
+        #main-nav {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Content shift animation */
+        #content-container {
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        /* Hamburger Icon Animation */
+        .hamburger-icon div {
+            transition: all 0.3s ease-in-out;
+        }
+        .hamburger-icon.open div:first-child { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger-icon.open div:nth-child(2) { opacity: 0; }
+        .hamburger-icon.open div:last-child { transform: rotate(-45deg) translate(7px, -7px); }
+        
+        /* Scroll-triggered fade-in animation */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom glow effects for branding */
+        .blue-glow {
+            text-shadow: 0 0 10px rgba(59, 130, 246, 0.7), 0 0 20px rgba(59, 130, 246, 0.5);
+        }
+        .red-glow {
+            box-shadow: 0 0 15px rgba(239, 68, 68, 0.7), 0 0 5px rgba(239, 68, 68, 0.7);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="fixed top-0 left-0 w-full h-full bg-black flex flex-col justify-center items-center z-[1000]">
+        <span class="font-brand text-4xl text-red-500 animate-pulse">SOULBOUND STUDIOS</span>
+        <span class="text-gray-400 mt-2">LOADING...</span>
+    </div>
+
+    <!-- Pop-out Sidebar Navigation -->
+    <nav id="main-nav" class="fixed top-0 left-0 h-full w-64 bg-gray-900/90 backdrop-blur-sm border-r-2 border-red-500 transform -translate-x-full z-40 p-8">
+        <ul class="flex flex-col space-y-4">
+            <li><a href="index.html" class="block py-3 px-4 rounded-lg text-gray-200 hover:bg-red-500 hover:text-black transition-all duration-300 transform hover:translate-x-2">Home</a></li>
+            <li><a href="about.html" class="block py-3 px-4 rounded-lg text-gray-200 hover:bg-red-500 hover:text-black transition-all duration-300 transform hover:translate-x-2">About</a></li>
+            <li><a href="creators.html" class="block py-3 px-4 rounded-lg text-gray-200 hover:bg-red-500 hover:text-black transition-all duration-300 transform hover:translate-x-2">Creators</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <div id="content-container" class="relative">
+        <!-- Header -->
+        <header class="sticky top-0 bg-gray-900/80 backdrop-blur-md z-30 border-b-2 border-red-500 shadow-lg">
+            <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+                <!-- Hamburger Menu Toggle -->
+                <button id="menu-toggle" class="z-50 p-2">
+                    <div class="hamburger-icon h-6 w-7 flex flex-col justify-between">
+                        <div class="h-1 w-full bg-white rounded-full"></div>
+                        <div class="h-1 w-full bg-white rounded-full"></div>
+                        <div class="h-1 w-full bg-white rounded-full"></div>
+                    </div>
+                </button>
+                
+                <!-- Studio Brand -->
+                <div class="text-right">
+                    <a href="index.html" class="flex items-center gap-3">
+                        <span class="text-sm sm:text-base font-bold text-gray-300 hidden sm:block">By Soulbound Studios</span>
+                        <!-- Using a placeholder for the logo -->
+                        <img class="h-12 w-12 rounded-full border-2 border-red-500 object-cover transition-transform duration-300 hover:scale-110 hover:rotate-6" 
+                                src="https://placehold.co/100x100/555/FFF?text=SBS" 
+                                alt="Soulbound Studios Logo">
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="container mx-auto max-w-7xl py-12 px-6">
+            <section class="mb-12 text-center fade-in-section">
+                <h1 class="text-5xl md:text-6xl font-brand font-bold text-red-500 mb-4">Our Creators</h1>
+                <p class="text-gray-400 max-w-2xl mx-auto">Get to know the amazing creators we partner with.</p>
+            </section>
+
+            <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Creator Card 1 -->
+                <div class="bg-gray-800 p-6 rounded-xl border-2 border-red-500/50 shadow-lg flex flex-col items-center text-center fade-in-section">
+                    <img class="w-32 h-32 rounded-full border-4 border-amber-300 mb-4" src="d:\Firelite Website\Images\Firelite Logo.jpg" alt="Creator Profile Image">
+                    <h2 class="text-3xl font-brand font-bold text-amber-300 mb-2">FIRELITE</h2>
+                    <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+                        A talented creator known for making music beats and engaging digital content.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="https://www.youtube.com/@FireliteZGaming" class="text-red-500 hover:underline">YouTube</a>
+                        <a href="https://soundcloud.com/firelite-844578060?utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing" class="text-red-500 hover:underline">SoundCloud</a>
+                    </div>
+                </div>
+
+                <!-- Creator Card 2 -->
+                <div class="bg-gray-800 p-6 rounded-xl border-2 border-red-500/50 shadow-lg flex flex-col items-center text-center fade-in-section">
+                    <img class="w-32 h-32 rounded-full border-4 border-amber-300 mb-4" src="https://placehold.co/200x200/555/FFF?text=Creator+2" alt="Creator Profile Image">
+                    <h2 class="text-3xl font-brand font-bold text-amber-300 mb-2">Creator Name</h2>
+                    <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+                        A description of the creator's work and their contribution to the community.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-red-500 hover:underline">Channel</a>
+                        <a href="#" class="text-red-500 hover:underline">Website</a>
+                    </div>
+                </div>
+
+                <!-- Creator Card 3 -->
+                <div class="bg-gray-800 p-6 rounded-xl border-2 border-red-500/50 shadow-lg flex flex-col items-center text-center fade-in-section">
+                    <img class="w-32 h-32 rounded-full border-4 border-amber-300 mb-4" src="https://placehold.co/200x200/555/FFF?text=Creator+3" alt="Creator Profile Image">
+                    <h2 class="text-3xl font-brand font-bold text-amber-300 mb-2">Another Creator</h2>
+                    <p class="text-lg text-gray-300 mb-4 leading-relaxed">
+                        This person creates awesome stuff! Check them out for more great content.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="text-red-500 hover:underline">Portfolio</a>
+                        <a href="#" class="text-red-500 hover:underline">Socials</a>
+                    </div>
+                </div>
+            </section>
+        </main>
+        
+        <!-- Footer -->
+        <footer class="bg-black py-8 text-center text-gray-500">
+            <p>&copy; 2025 Soulbound Studios. All Rights Reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const menuToggle = document.getElementById('menu-toggle');
+            const mainNav = document.getElementById('main-nav');
+            const loadingScreen = document.getElementById('loading-screen');
+            const contentContainer = document.getElementById('content-container');
+            const hamburgerIcon = menuToggle.querySelector('.hamburger-icon');
+
+            // --- Menu Toggle Functionality ---
+            menuToggle.addEventListener('click', (event) => {
+                event.preventDefault();
+                mainNav.classList.toggle('-translate-x-full');
+                contentContainer.classList.toggle('translate-x-64');
+                hamburgerIcon.classList.toggle('open');
+            });
+
+            // --- Close Menu if clicking outside ---
+            document.addEventListener('click', (event) => {
+                const isClickInsideNav = mainNav.contains(event.target);
+                const isClickOnToggle = menuToggle.contains(event.target);
+
+                if (!isClickInsideNav && !isClickOnToggle && mainNav.classList.contains('-translate-x-full') === false) {
+                    mainNav.classList.add('-translate-x-full');
+                    contentContainer.classList.remove('translate-x-64');
+                    hamburgerIcon.classList.remove('open');
+                }
+            });
+
+            // --- Loading Screen Fade Out ---
+            window.addEventListener('load', () => {
+                setTimeout(() => {
+                    loadingScreen.classList.add('fade-out');
+                }, 500); // Small delay for visual effect
+            });
+
+            // --- Scroll-triggered Animations ---
+            const sections = document.querySelectorAll('.fade-in-section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                    }
+                });
+            }, {
+                threshold: 0.1 // Trigger when 10% of the element is visible
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
